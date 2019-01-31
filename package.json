@@ -4,8 +4,8 @@
   "description": "舒服路由",
   "main": "dist/bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
+    "test": "node test/test.js",
     "pub": "npm publish --access public"
   },
   "repository": {
@@ -19,10 +19,12 @@
   },
   "homepage": "https://github.com/MRchenkuan/soft-router#readme",
   "dependencies": {
+    "@babel/runtime": "^7.3.1",
     "lodash.isequal": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "babel-loader": "^8.0.5"
   }
