@@ -1,6 +1,6 @@
 {
-  "name": "@xsyx/soft-router",
-  "version": "0.1.1",
+  "name": "soft-router",
+  "version": "0.1.2",
   "description": "舒服路由",
   "main": "src/core.js",
   "scripts": {
