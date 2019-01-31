@@ -64,7 +64,7 @@ const router = {
 }
 
 export default function Router(configs, platform="wx") {
-    const router = platform === "wx" ? router : router
+    // const router = platform === "wx" ? router : router
     if (!configs || !configs.length) throw new Error('导航配置失败')
     this.configs = configs;
     return {
