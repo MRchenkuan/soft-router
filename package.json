@@ -1,6 +1,6 @@
 {
   "name": "soft-router",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "舒服路由",
   "main": "dist/bundle.js",
   "scripts": {
