@@ -1,5 +1,5 @@
 import isEqual from 'lodash.isequal'
-const router = {
+export default {
     _createPromiseResult(resolve, reject) {
         let result = false;
         return {
@@ -18,7 +18,13 @@ const router = {
             }
         }
     },
-    go(url, param) {
+    /**
+     * 该方法在微信端实现了重复路径回退，不新开activity
+     * 另外需要实现路由10层内的管理
+     * @param {*} url 页面地址
+     * @param {*} param 页面参数
+     */
+    go(url, param ={}) {
         return new Promise((resolve, reject) => {
             const pages = getCurrentPages();
             let distance = 0;
@@ -56,49 +62,16 @@ const router = {
             })
         })
     },
-    getPageUrl() {
-        const pages = wx.getCurrentPages();
-        return pages[pages.length - 1].route;
-    }
-
-}
-
-export default function Router(configs, platform="wx") {
-    // const router = platform === "wx" ? router : router
-    if (!configs || !configs.length) throw new Error('导航配置失败')
-    this.configs = configs;
-    return {
-        go(routerName, param) {
-            return new Promise(async (res, rej) => {
-                const routerConfig = configs.find(it => {
-                    return it.name === routerName;
-                })
-                if (!routerConfig) return;
-                const { url, name, before } = routerConfig;
-                typeof before === 'function' && await (before() !== false) && router.go(url, param).then(res).catch(rej)
-            })
-
-        },
-        switch(name, param) {
-            return new Promise(async (res, rej) => {
-                const routerConfig = configs.find(it => {
-                    return it.name === routerName;
-                })
-                if (!routerConfig) return;
-                const { url, name, before } = routerConfig;
-                typeof before === 'function' && await (before() !== false) && router.switch(url, param).then(res).catch(rej)
-            })
-        },
-        redirectTo(routerName, param) {
-            const routerConfig = configs.find(it => {
-                return it.name === routerName;
-            })
-            if (!routerConfig) return;
-            const { url, name } = routerConfig;
-            return router.switch(url, param)
-        },
-        back(delta = 1) {
-            router.back(delta);
-        },
+    /**
+     * 获取当前页面URI对象
+     * @returns Object<url, params>
+     */
+    getCurrentPageURI() {
+        const pages = getCurrentPages();
+        const page = pages[pages.length - 1];
+        return {
+            url: `/${page.route}`,
+            params: page.options,
+        }
     }
 }
