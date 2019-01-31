@@ -1,0 +1,22 @@
+{
+  "name": "@xsyx/soft-router",
+  "version": "0.1.0",
+  "description": "舒服路由",
+  "main": "src/core.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRchenkuan/soft-router.git"
+  },
+  "author": "chenkuan <393667111@qq.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MRchenkuan/soft-router/issues"
+  },
+  "homepage": "https://github.com/MRchenkuan/soft-router#readme",
+  "dependencies": {
+    "lodash.isequal": "^4.5.0"
+  }
+}
