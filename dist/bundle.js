@@ -2165,6 +2165,7 @@ module.exports = __webpack_require__(9);
   switch: function _switch(url) {
     var _this2 = this;
 
+    var param = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     return new Promise(function (resolve, reject) {
       url += "?".concat(Object.keys(param).map(function (key) {
         return "".concat(key, "=").concat(param[key]);

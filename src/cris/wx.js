@@ -45,7 +45,7 @@ export default {
             }
         })
     },
-    switch(url) {
+    switch(url, param = {}) {
         return new Promise((resolve, reject) => {
             url += `?${Object.keys(param).map(key => `${key}=${param[key]}`).join('&')}`
             wx.redirectTo({
