@@ -21,7 +21,7 @@ export default function Router(configs) {
             })
 
         },
-        switch(name, param) {
+        switch(routerName, param) {
             return new Promise(async (res, rej) => {
                 const routerConfig = configs.find(it => {
                     return it.name === routerName;
